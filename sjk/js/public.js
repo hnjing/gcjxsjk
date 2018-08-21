@@ -11,7 +11,7 @@ var config = {
 };
 //修改变化
 // hn Bucket = 'test-1251784278';  Region = 'ap-guangzhou';
-// yy Bucket = '';  Region = 'ap-guangzhou';
+// yy Bucket = 'test-1255970667';  Region = 'ap-guangzhou';
 // cs Bucket = 'test-1257352992';  Region = 'ap-chengdu';
 
 var Bucket = '';
@@ -19,6 +19,8 @@ var Region = '';
 switch (config.IP) {
     case 'http://www.yysgcjx.cn/zbsjk/':
         $('.changeName').text('益阳市工程机械数据库');
+        Bucket = 'test-1255970667';
+        Region = 'ap-guangzhou';
         break;
     case 'www.cssgcjxyjsjk.cn/zbsjk/':
         $('.changeName').text('长沙市工程机械应急数据库');
