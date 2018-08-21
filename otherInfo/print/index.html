@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>套打测试</title>
+<link rel="stylesheet" href="css/index.css" />
+<script type="text/javascript" src='js/jquery-1.7.2.min.js'></script>
+<script type="text/javascript" src='js/index.js'></script>
+</head>
+<body>
+ <input type="button" onclick="alertMessage()" value="保存信息"/>
+ <input type="button" onclick="printMessage()" value="打印"/>
+ <input id="divButton" type="button" onclick="printsetup()" value="打印预览"/>
+  <input type="button" onclick="allMove('left')" value="整体左移"/>
+ <input type="button" onclick="allMove('right')" value="整体右移"/>
+ <input type="button" onclick="allMove('up')" value="整体上移"/>
+ <input type="button" onclick="allMove('down')" value="整体下移"/>
+
+
+<div style="WIDTH: 800px; HEIGHT: 490px;border:1px solid #F00" id=main> 
+
+ <dl class='paper'>
+			<dt >
+				<span id="name"> 姓名 </span>
+			</dt>
+		</dl>
+		<dl class='paper'>
+			<dt>
+				<span id='sex'>性别</span>
+			</dt>
+			 
+		</dl>
+		<dl class='paper'>
+			<dt>
+				<span id='age'>年龄</span>
+			</dt>
+		</dl>
+		<dl class='paper'>
+			<dt>
+				<span id='age'>身份证号</span>
+			</dt>
+		</dl>
+		
+	</div>
+ 
+
+<!--[if IE 6]>
+<script type="text/javascript" src="js/iepng.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('#send,#close,.close');
+</script>
+<![endif]-->
+
+</body>
+</html>

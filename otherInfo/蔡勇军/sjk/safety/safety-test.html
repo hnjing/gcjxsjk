@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>安全培训学习页面</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="shortcut icon" href="../img/icon.png">
+    <style>
+        .index-title {
+            text-align: center;
+            margin: 20px auto;
+        }
+        .safety-bottom-btn{
+            text-align: center;
+        }
+        .enterTest{
+            margin-right:20px;
+        }
+        .safety-test-form input{
+            margin:0 10px;
+        }
+        .test-title{
+            margin-bottom:10px;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="index-title"><img class="index-icon changeName" src="../img/icon.png" height="45" width="45"/>湖南应急救援物资装备数据库安全考试</h1>
+    <div class="test-title">单选题共50题（每题2分共100分，在给出的4个选项中只选1个）：</div>
+    <div class="test-content">
+        <form class="safety-test-form">
+            <div class="form-group">
+                <label for="test1">1.生产经营单位是否可与从业人员订立协议，免除或者减轻其对从业人员因生产安全事故伤亡依法应承担的责任？</label>
+                <div id="test1">
+                    <input name="test1" id="test011" type="radio" value="没有规定"><label for="test011">没有规定</label>
+                    <input name="test1" id="test012" type="radio" value="经协商可以"><label for="test012">经协商可以</label>
+                    <input name="test1" id="test013" type="radio" value="可以"><label for="test013">可以</label>
+                    <input name="test1" id="test014" type="radio" value="不得"><label for="test014">不得</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="test2">2.施工单位应当在施工现场入口处、施工起重机械、临时用电设施、脚手架、出入通道口、楼梯口、电梯井口、孔洞口、桥梁口、隧道口、基坑边沿、爆破物及有害危险气体和液体存放处等危险部位，设置明显的____</label>
+                <div id="test2">
+                    <input name="test2" id="test021" type="radio" value="没有规定"><label for="test021">没有规定</label>
+                    <input name="test2" id="test022" type="radio" value="经协商可以"><label for="test022">经协商可以</label>
+                    <input name="test2" id="test023" type="radio" value="可以"><label for="test023">可以</label>
+                    <input name="test2" id="test024" type="radio" value="不得"><label for="test024">不得</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="test3">3.施工单位应当在施工现场入口处、施工起重机械、临时用电设施、脚手架、出入通道口、楼梯口、电梯井口、孔洞口、桥梁口、隧道口、基坑边沿、爆破物及有害危险气体和液体存放处等危险部位，设置明显的____</label>
+                <div id="test3">
+                    <input name="test2" id="test031" type="radio" value="没有规定"><label for="test031">没有规定</label>
+                    <input name="test2" id="test032" type="radio" value="经协商可以"><label for="test032">经协商可以</label>
+                    <input name="test2" id="test033" type="radio" value="可以"><label for="test033">可以</label>
+                    <input name="test2" id="test034" type="radio" value="不得"><label for="test034">不得</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="safety-bottom-btn">
+        <button class="btn brn-lg btn-lg btn-primary enterTest">提  交</button>
+        <a href="safety.html" class="btn btn-lg btn-default safetyBack">返    回</a>
+    </div>
+</div>
+<div class="modal fade" id="handleErrorModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">操作失败</h4>
+            </div>
+            <div class="modal-body">
+                <span class="handleErrorModalContent text-red"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="postScore">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">成绩提交</h4>
+            </div>
+            <div class="modal-body">
+                <div class="postScoreText text-success">恭喜你，考试及格！</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/public.js"></script>
+<script src="../js/service.js"></script>
+<script>
+    $(function(){
+        var examinationResults = 90;
+        var examinationId = window.sessionStorage.getItem('examinationId');
+        $('.enterTest').click(function(){
+            var send = {
+                examinationResults: examinationResults
+            };
+            service.updateExamination(send,examinationId,function(data){
+                console.log(data);
+                if(examinationResults>60){
+                    // 提示考试成功
+                    $('#postScore').modal('show');
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

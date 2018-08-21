@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>安全培训学习页面</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="shortcut icon" href="../img/icon.png">
+    <link rel="stylesheet" href="../css/public.css">
+    <style>
+        .index-icon {
+        }
+        .index-title {
+            text-align: center;
+            margin: 20px auto;
+        }
+        .safety-bottom-btn{
+            text-align: center;
+        }
+        .saveVideo{
+            margin:0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="index-title"><img class="index-icon changeName" src="../img/icon.png" height="35" width="35"/>湖南应急救援物资装备数据库安全培训视频</h1>
+        <video id="myvideo" autoplay  loop="loop" id="vdo" width="320px" height="240px" preload="auto" style="width: 100%; height: 100%; background-color: rgb(0, 0, 0);">
+            <source src='https://media.w3.org/2010/05/sintel/trailer.ogv' type="video/ogg"></source>
+        </video>
+        <div>培训提示：请认真学习此视频，累计三个小时即可参加考试答题！</div>
+        <div class="safety-bottom-btn">
+            <a href="safety-test.html" class="btn glyphicon glyphicon-pencil brn-lg btn-lg btn-primary enterTest">进入考试</a>
+            <button class="btn btn-success btn-lg glyphicon glyphicon-play-circle saveVideo" title="保存时间，下次将从记录时间开始播放">保存时间</button>
+            <a href="safety-login.html" class="btn btn-lg glyphicon glyphicon-arrow-left btn-default safetyBack">返    回</a>
+        </div>
+    </div>
+    <div class="modal fade" id="saveTime">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">保存成功</h4>
+                </div>
+                <div class="modal-body">
+                    观看时间保存成功！
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="handleErrorModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">操作失败</h4>
+                </div>
+                <div class="modal-body">
+                    <span class="handleErrorModalContent text-red"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/public.js"></script>
+    <script src="../js/service.js"></script>
+    <script>
+        $(function(){
+            var examinationId = window.sessionStorage.getItem('examinationId');
+            var video = document.getElementById('myvideo');
+            var currentTime = "1";
+            service.getExamination(examinationId, function (data) {
+                console.log(data);
+                currentTime = data.watchTime?data.watchTime:0;
+                video.addEventListener("loadedmetadata",function(){
+                    this.currentTime = currentTime;
+                });
+                video.addEventListener("timeupdate",function(){
+                    var currentTime = Math.floor(video.currentTime);
+                    console.log(currentTime);
+                });
+            });
+            video.addEventListener("loadedmetadata",function(){
+                this.currentTime = currentTime;
+            });
+            video.addEventListener("timeupdate",function(){
+                currentTime = Math.floor(video.currentTime);
+                localStorage.setItem("currentTime",currentTime);
+                console.log(localStorage.getItem("currentTime"));
+            });
+            $('.saveVideo').click(function(){
+                var send = {
+                    watchTime:currentTime
+                };
+                service.updateExamination(send,examinationId,function(data){
+                    console.log(data);
+                        // 提示考试成功
+                        $('#saveTime').modal('show');
+                })
+            })
+        });
+    </script>
+</body>
+</html>
