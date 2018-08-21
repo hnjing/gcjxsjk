@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>湖南应急救援物资装备设备详情</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/public.css"/>
+    <style>
+        #qrcode{
+            width:100%;
+        }
+        #qrcode .dev-detail-table td{
+            font-size:24px;
+        }
+        #qrcode .dev-detail-table td{
+            width:100%;
+        }
+        #qrcode table{
+            width:61.8%;
+        }
+    </style>
+</head>
+<body>
+<!--设备详情-->
+<div id="qrcode" class="dev-detail">
+    <div class="dev-detail-title">
+        <span class="dev-detail-title-icon"></span>
+        <span><span class="changeName">湖南潇湘工程机械</span>设备详情</span>
+    </div>
+    <div class="dev-detail-table">
+        <table border="1">
+            <tr>
+                <td>姓名：<span class="detail-userName"></span></td>
+            </tr>
+            <tr>
+                <td>登记编号：<span class="detail-registerNumber"></span></td>
+            </tr>
+            <tr>
+                <td>登记单位：<span class="detail-registerCompany"></span></td>
+            </tr>
+            <tr>
+                <td>设备编号：<span class="detail-equipmentNumber"></span></td>
+            </tr>
+            <tr>
+                <td>手机：<span class="detail-userPhone"></span></td>
+            </tr>
+            <tr>
+                <td>身份证号：<span class="detail-userIdCard"></span></td>
+            </tr>
+            <tr>
+                <td>设备品牌：<span class="detail-equipmentBrand"></span></td>
+            </tr>
+            <tr>
+                <td>购买日期：<span class="detail-purchaseTime"></span></td>
+            </tr>
+            <tr>
+                <td>地址：<span class="detail-equipmentProvince"></span><span
+                    class="detail-equipmentCity"></span><span class="detail-equipmentArea"></span><span class="detail-userAddress"></span></td>
+            </tr>
+            <tr>
+                <td>单位名称：<span class="detail-companyName"></span></td>
+            </tr>
+            <tr>
+                <td>设备型号：<span class="detail-equipmentModel"></span></td>
+            </tr>
+            <tr>
+                <td>设备类型：<span class="detail-equipmentType"></span></td>
+            </tr>
+            <tr>
+                <td>信用代码：<span class="detail-creditCode"></span></td>
+            </tr>
+            <tr>
+                <td>保险机构：<span class="detail-insuranceAgency"></span></td>
+            </tr>
+            <tr>
+                <td>保险险种：<span class="detail-insuranceInsurance"></span></td>
+            </tr>
+            <tr>
+                <td>铲斗容量(m3)：<span class="detail-bucketCapacity"></span></td>
+            </tr>
+            <tr>
+                <td>整机质量(kg)：<span class="detail-machineQuality"></span></td>
+            </tr>
+            <tr>
+                <td>耗油量：<span class="detail-fuelConsumption"></span></td>
+            </tr>
+            <tr>
+                <td>行走方式：<span class="detail-equipmentTrack"></span></td>
+            </tr>
+            <tr>
+                <td>发动机编号：<span class="detail-engineNumber"></span></td>
+            </tr>
+            <tr>
+                <td>发动机功率(kw)：<span class="detail-enginePower"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>购买方式：<span class="detail-purchaseMethod" data-type="purchaseMethod"></span></td>
+            </tr>
+            <tr>
+                <td>长（M）：<span class="detail-equipmentLong"></span></td>
+            </tr>
+            <tr>
+                <td>宽（M）：<span class="detail-equipmentWide"></span></td>
+            </tr>
+            <tr>
+                <td>高（M）：<span class="detail-equipmentHight"></span></td>
+            </tr>
+            <tr>
+                <td>尾气排放：<span class="detail-exhaustEmission"></span></td>
+            </tr>
+            <tr>
+                <td>排放阶段：<span class="detail-dischargeStage"></span></td>
+            </tr>
+            <tr>
+                <td>噪音检测：<span class="detail-noiseDetection" data-type="noiseDetection"></span></td>
+            </tr>
+            <tr>
+                <td>污染物：<span class="detail-equipmentContaminants"></span></td>
+            </tr>
+            <tr>
+                <td>燃料来源：<span class="detail-fuelSource"></span></td>
+            </tr>
+            <tr>
+                <td>燃料品种：<span class="detail-fuelVariety"></span></td>
+            </tr>
+            <tr>
+                <td>设备照片：<img class="detail-equipmentPic" src="" alt=""></td>
+            </tr>
+            <tr>
+                <td>发票照片：<img class="detail-billPic" src="" alt=""></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/public.js"></script>
+<script src="js/service.js"></script>
+<script>
+    $(function(){
+        //获取URL中参数
+        var GetQueryString=function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)return decodeURI(r[2]);
+            return null;
+        };
+        service.DevDetail({equipmentNumber:GetQueryString('equipmentNumber'),userName:GetQueryString('userName')},function(data){
+            //详情赋值
+            for (var key in data) {
+                var current = $('.detail-' + key);
+                if (current.attr('data-type') === 'purchaseMethod') {
+                    current.text(data[key]==0 ? '全款购买' :data[key]==1 ? '分期购买':'转让购买')
+                } else if (current.attr('data-type') === 'noiseDetection') {
+                    current.text(data[key] === '1' ? '合格' : '不合格')
+                } else if(current.attr('data-type') == 'equipmentTrack'){
+                    current.text(data[key] == '0' ? '轮胎' : '履带')
+                }else {
+                    if (current.length) {
+                        current.text(data[key]);
+                    }
+                }
+            }
+            //设备照片
+            $('.detail-billPic').attr('src', data.billPic ? data.billPic : null);
+            //发票照片
+            $('.detail-equipmentPic').attr('src', data.equipmentPic ? data.equipmentPic : null);
+        })
+    })
+</script>
+</body>
+</html>

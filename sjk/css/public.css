@@ -1,0 +1,339 @@
+
+.bg-light-blue{
+    background-color:#337ab7;
+    color:#fff;
+}
+.table-btn{
+    font-size: 14px;
+    cursor:pointer;
+}
+.table-btn:hover{
+    color:#fc913f;
+}
+header{
+    width:100%;
+    height:65px;
+    margin-bottom:10px;
+}
+.header-left{
+    float:left;
+    margin-left:20px;
+}
+.header-right{
+    float:right;
+    margin-right:20px;
+}
+.header-right-title{
+    line-height:65px;
+    margin-right:20px;
+}
+.header-right-close>a{
+    width: 100px;
+    height: 25px;
+    line-height: 15px;
+}
+main{
+    position:absolute;
+    top:75px;
+    left:0;
+    right:0;
+    bottom:0;
+    overflow:hidden;
+}
+.main-left{
+    float:left;
+    height:100%;
+    width:15%;
+}
+.main-right{
+    float:right;
+   height:100%;
+    width:85%;
+}
+.main-right>div{
+    min-height:100%;
+}
+.table{
+    border-color:#333;
+}
+.list-group>button{
+    text-align:center;
+}
+.main-right-index{
+    background-image:url('../img/indexBg.jpg');
+    background-repeat:no-repeat;
+    background-size:100%;
+    background-position:center;
+    /*background-color:#4000ff;*/
+}
+.main-right-index-h1{
+    position:absolute;
+    top:40%;
+    color:#00a3ea;
+    font-size:38px;
+    font-weight:bold;
+    letter-spacing:5px;
+    text-shadow:5px 2px 6px #000;
+    margin-left:calc(50% - 400px);
+}
+.header-left-icon{
+    width:35px;
+    height:35px;
+    display:inline-block;
+}
+.main-right-password,.main-right-dev,.main-right-ev,.main-right-personnel,.dev-add,.dev-detail{
+    background-image:url('../img/bg.png');
+}
+.main-right-password{
+    overflow:hidden;
+}
+.main-right-personnel{
+    position: relative;
+}
+#userSearch{
+    position: absolute;
+    top: 16px;
+    left:920px;
+}
+.main-right-password>h2{
+    margin:50px 0 50px 200px;
+}
+.updatePassword{
+    margin-left:calc(50% - 40px);
+}
+.main-right-dev-search-form .form-group{
+    margin:0 20px 10px 20px;
+}
+.main-right-dev-search-form select{
+    width:120px;
+    height:30px;
+}
+.search-form-btn{
+    margin-top:-15px;
+}
+.addDev,.addPersonnel,.evTest{
+    margin-left:20px;
+}
+.main-right-dev-table{
+    margin:10px 20px 0 20px;
+}
+.main-right-dev-table .label{
+    font-size:14px;
+}
+.main-right-dev-table table{
+    margin-bottom:0;
+}
+.main-right-dev-table .pagination{
+    margin:0 40px 0 0;
+    float:right;
+}
+.main-right-dev-table button{
+    margin-right:5px;
+}
+.dev-add-title,.dev-add-title-edit{
+    margin-left:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+.tableHandleEdit .dev-add-title-edit{
+    display:block;
+}
+.tableHandleEdit .dev-add-title{
+    display:none;
+}
+.tableHandleEdit .dev-add-btn-send{
+    display:none;
+}
+.tableHandleEdit .dev-add-btn-send-edit{
+    display:inline-block;
+}
+.dev-add .form-inline{
+    margin:20px 20px 0 20px
+}
+.dev-add .form-group{
+    width:24%;
+    margin-bottom:20px;
+}
+.dev-add .form-group select{
+    width:200px;
+    height:25px;
+}
+.dev-add-btn{
+    text-align: center;
+}
+.dev-add-btn-send,.dev-add-btn-send-edit{
+    margin-right:20px;
+}
+.dev-detail-title{
+    font-size:34px;
+    font-weight:bold;
+    text-align: center;
+}
+.dev-detail-title-icon{
+    width:50px;
+    height:50px;
+    display:inline-block;
+    background-image:url('../img/icon.png');
+    background-repeat:no-repeat;
+    background-size:50px 50px;
+    position:relative;
+    top:15px;
+}
+.dev-detail-table table{
+    margin:10px auto;
+}
+.dev-detail-table td{
+    width:280px;
+    height:30px;
+    font-size:14px;
+    padding-left:5px;
+    vertical-align:top;
+}
+.dev-detail-btn{
+    text-align:center;
+}
+#addPersonnelModal select{
+    margin-left: 15px;
+    height: 30px;
+    width: 176px;
+}
+#addPersonnelModal #addPersonnelRoleId{
+    width:368px;
+}
+.updatePasswordErrorTitle{
+    margin-top:-10px;
+}
+.title-error,.updatePasswordErrorTitle{
+    color:#ff4949;
+    font-weight:bold;
+}
+.colHeight{
+    height:54px;
+}
+.item-required:before{
+    content:'* ';
+    color:#ff4949;
+}
+.dev-add .form-group.form-required{
+    margin-bottom:0;
+    height:54px;
+}
+.form-required .title-error{
+    margin-left:82px;
+}
+.form-required .title-error.title-error-margin-10{
+    margin-left:55px;
+}
+.addPersonnelRoleId,.addPersonnelity{
+    margin-top: 32px;
+    margin-left: 111px;
+}
+#addPersonnelModal .form-group{
+    height:52px;
+}
+.stateForEdit .modal-btn-upDate{
+    display:inline-block;
+}
+.stateForEdit .modal-btn-add{
+    display:none;
+}
+#deleteUser .modal-body,#passwordRepeatSuccess .modal-body,#handleErrorModal .modal-body,#passwordUpdateSuccess .modal-body,
+#deleteDev .modal-body,#repeatPasswordModal .modal-body,#postScore .modal-body,#saveTime .modal-body{
+    text-align:center;
+    font-size:18px;
+    margin:40px;
+}
+.deleteUserName,.text-red{
+    color:#e4393c;
+}
+.main-right{
+    overflow:auto;
+}
+.stamp{
+   padding-top:32px;
+   display:none;
+}
+.stamp1-div{
+    margin-left:35px;
+    height:31px;
+}
+.stamp .detail-equipmentNumber,.stamp .detail-registerNumber{
+    display:inline-block;
+}
+.stamp .detail-equipmentNumber{
+    width:310px;
+}
+.qrCode-img-stamp{
+    margin-top:-10px;
+    width:100px;
+    height:100px;
+    margin-left:350px;
+}
+.stamp-date{
+    padding-left:270px;
+    margin-top:8px;
+}
+.stamp-qrcode{
+    margin-top:10px;
+}
+.certificate-month{
+    margin-left:25px;
+}
+.certificate-day{
+    margin-left:20px;
+}
+@media print{
+    .PageNext{
+        page-break-after: always;
+    }
+}
+.stamp2-div-first{
+    margin-top:32px;
+}
+.stamp2-div{
+    height:39px;
+}
+.stamp2-div>div{
+    float:left;
+    margin-left:0px;
+}
+.stamp2-div>div:first-child{
+    width:300px;
+}
+.stamp2-div .detail-equipmentLong,.stamp2-div .detail-equipmentHight,.stamp2-div .detail-equipmentWide{
+    margin-left:15px;
+    width:50px;
+}
+.stamp2-div-div>div{
+    float:left;
+}
+.stamp2-div-div .detail-equipmentTrack-lt,.stamp2-div-div .detail-equipmentTrack-ld{
+    margin-left:30px;
+    width:60px;
+}
+.stamp2-div.detail-registerCompany{
+    display:block;
+}
+.dev-detail-table img{
+    width:300px;
+    height:300px;
+}
+#equipmentPic,#billPic{
+    width:200px;
+}
+.checkEquipmentPic,.checkBillPic{
+    float:right;
+    margin-right:20px;
+    height:33px;
+    line-height:22px;
+}
+#showPic .modal-content{
+    width:800px;
+}
+#showPic .modal-content img{
+    width:100%;
+}
+/*@page {*/
+    /*margin: 14mm 18mm 10mm;*/
+    /*size: 20.1cm 29.7cm;//也可以直接写国际标准尺寸  size: A4;*/
+/*}*/

@@ -1,0 +1,136 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>安全培训查询</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../img/icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap-grid.css">-->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/public.css">
+    <style>
+        body {
+            background-image: url(../img/bg.png)
+        }
+
+        .index-icon {
+            margin: auto;
+            display: block;
+            margin-top: 10%;
+        }
+
+        .index-title {
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        .form-label {
+            font-size: 18px;
+        }
+
+        .login-back {
+            margin-left: 53px;
+        }
+
+        .btn-login, .btn-default {
+            width: 200px;
+        }
+        .safetyName,.safetyPassword{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="container">
+    <img class="index-icon" src="../img/icon.png" height="191" width="191"/>
+    <h1 class="index-title">安全培训登录</h1>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="safetyName" class="col-sm-4 control-label form-label">姓 名:</label>
+            <div class="col-sm-5 colHeight">
+                <input class="form-control" id="safetyName" placeholder="请输入姓名">
+                <div class="title-error safetyName">不能为空，请输入!</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="safetyPassword" class="col-sm-4 control-label form-label">号 牌:</label>
+            <div class="col-sm-5 colHeight">
+                <input class="form-control" id="safetyPassword" placeholder="请输入车辆号牌">
+                <div class="title-error safetyPassword">不能为空，请输入!</div>
+            </div>
+        </div>
+    </form>
+    <div class="col-sm-offset-4 col-sm-8">
+        <button class="btn btn-lg btn-primary btn-login">登录</button>
+        <a href="../index.html" class="login-back btn btn-lg btn-default">返回</a>
+    </div>
+</div>
+<div class="modal fade" id="handleErrorModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">操作失败</h4>
+            </div>
+            <div class="modal-body">
+                <span class="handleErrorModalContent text-red"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/public.js"></script>
+<script src="../js/service.js"></script>
+<script>
+    $('.btn-login').click(function () {
+        var loginName = $('#safetyName').val();
+        var loginPassword = $('#safetyPassword').val();
+        var passOver = true;
+        if (!loginName) {
+            //如果姓名为空，提示用户
+            $(".safetyName").show();
+            passOver = false
+        }
+        if (!loginPassword) {
+            $(".safetyPassword").show();
+            passOver = false
+        }
+        if (passOver) {
+            service.addExamination({equipmentNumber: loginPassword, userName: loginName}, function (data) {
+                console.log(data);
+                window.sessionStorage.setItem('examinationId',data.examinationId);
+                window.sessionStorage.setItem('examinationResults',data.examinationResults);
+                window.sessionStorage.setItem('watchTime',data.watchTime);
+                window.sessionStorage.setItem('equipmentNumber',data.equipmentNumber);
+                window.sessionStorage.setItem('userName',data.userName);
+                window.location.href = './safety.html';
+            });
+        }
+    });
+    $('#safetyName').change(function () {
+        $(".safetyName").hide();
+    });
+    $('#safetyPassword').change(function () {
+        $(".safetyPassword").hide();
+    })
+</script>
+</body>
+</html>
