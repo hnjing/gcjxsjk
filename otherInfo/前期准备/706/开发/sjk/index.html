@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>湖南应急救援物资装备数据库</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="img/icon.png">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap-grid.css">-->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <style>
+            body{
+                background-image:url(img/bg.png)
+            }
+            .index-icon{
+                margin:auto;
+                display:block;
+                margin-top:10%;
+            }
+            .index-title{
+                text-align:center;
+                margin:30px auto;
+                color:#00a3ea;
+                font-size:38px;
+                font-weight:bold;
+                letter-spacing:5px;
+                text-shadow:5px 2px 6px #000;
+            }
+            .equipment-query,.emergency-rescue{
+                float:right;
+                margin-right:25px;
+            }
+            .safety-train,.manager-personnel{
+                margin-left:25px;
+            }
+            .index-btn1,.index-btn2{
+                margin-top:30px;
+            }
+        </style>
+        <script>
+            var locationUrl = location.href;
+            if(locationUrl.indexOf('www.yysgcjx.cn')==-1){
+                if(locationUrl.indexOf('yysgcjx.cn')!=-1){
+                    locationUrl = locationUrl.replace('yysgcjx.cn','www.yysgcjx.cn');
+                    location.href= locationUrl;
+                }
+            }
+            if(locationUrl.indexOf('www.hnsyjjyzbsjk.cn')==-1){
+                if(locationUrl.indexOf('hnsyjjyzbsjk.cn')!=-1){
+                    locationUrl = locationUrl.replace('hnsyjjyzbsjk.cn','www.hnsyjjyzbsjk.cn');
+                    location.href= locationUrl;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="container">
+            <img class="index-icon" src="img/icon.png" height="191" width="191"/>
+            <div class="index-title changeName">湖南应急救援物资装备数据库</div>
+            <div class="row index-btn1">
+                <div class="col-lg-6">
+                    <a class="btn btn-default btn-lg equipment-query" href="equipment/equipment-login.html">设备档案查询>></a>
+                </div>
+                <div class="col-lg-6">
+                    <a class="btn btn-default btn-lg safety-train" href="safety/safety-login.html">安全培训查询>></a>
+                </div>
+            </div>
+            <div class="row index-btn2">
+                <div class="col-lg-6">
+                    <a class="btn btn-default btn-lg emergency-rescue" href="emergency/emergency-login.html">应急救援查询>></a>
+                </div>
+                <div class="col-lg-6">
+                    <a class="btn btn-default btn-lg manager-personnel" href="mg/manager-login.html">管理人员登陆>></a>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery-1.11.3.js"></script>
+        <script src="js/public.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

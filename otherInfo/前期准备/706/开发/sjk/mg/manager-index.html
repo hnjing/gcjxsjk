@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>管理人员登陆首页</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="shortcut icon" href="../img/icon.png">
+    <style>
+        .account, .password, .newPassword, .newPasswordRepeat, .dev-add-title-edit, .dev-add-btn-send-edit,
+        .dev-audit-status, .labelAuditStatus1, .auditStatus1 .labelAuditStatus0, .auditStatus1 .tableAudit,
+        .auditStatus1 .tableEdit, .tablePrint, .tableCancelRescue, .tableSetRescue ,.title-edit-personnel,
+        .stateForEdit .title-add-personnel,.tableSetPaystatus{
+            display: none;
+        }
+        .style-display-none{
+            display:none;
+        }
+
+        .auditStatus1 .labelAuditStatus1, .auditStatus1 .tablePrint, .rescueStatus1 .tableCancelRescue,
+        .auditStatus1 .tableSetPaystatus,.rescueStatus0 .tableSetRescue,.stateForEdit .title-edit-personnel {
+            display: inline-block;
+        }
+
+        #equipmentCity, #equipmentArea {
+            width: 100px;
+        }
+
+        .form-required .title-error {
+            display: none;
+        }
+        .search-form-btn{
+            margin-left:20px;
+        }
+    </style>
+    <!-- 这里是解决bootstrap兼容性问题  -->
+    <!-- html5shiv.js和respond.js IE8支持HTML5元素和媒体查询 -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="bg-light-blue">
+    <div class="header-left">
+        <h3><img class="header-left-icon" src="../img/icon.png" alt=""><span class="changeName">湖南应急救援物资装备数据库</span></h3>
+    </div>
+    <div class="header-right">
+            <span class="header-right-title">
+                欢迎您，<span class="header-right-title-name"></span>（<span class="header-right-title-per"></span>）
+            </span>
+        <span class="header-right-close">
+                <a class="btn btn-group-sm btn-default glyphicon glyphicon-circle-arrow-left" href="manager-login.html" role="button">返 回</a>
+            </span>
+    </div>
+</header>
+<main>
+    <div class="main-left">
+        <div class="list-group">
+            <button type="button" class="list-group-item glyphicon glyphicon-home active">首页</button>
+            <button type="button" class="list-group-item glyphicon glyphicon-pencil">修改密码</button>
+            <button type="button" class="list-group-item glyphicon glyphicon-wrench">设备管理</button>
+            <button type="button" class="list-group-item glyphicon glyphicon-globe">环保检测</button>
+            <button type="button" class="list-group-item glyphicon glyphicon-user style-display-none personnelLeftBtn">人员管理</button>
+        </div>
+    </div>
+    <div class="main-right">
+        <!--首页-->
+        <div class="main-right-index">
+            <h1 class="main-right-index-h1 changeName">湖南应急救援物资装备数据库</h1>
+        </div>
+        <!--修改密码-->
+        <div class="main-right-password style-display-none">
+            <h2>密码修改:</h2>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="account" class="col-sm-3 control-label item-required">账号:</label>
+                    <div class="col-sm-5 colHeight">
+                        <input type="text" maxLength="11" class="form-control" id="account" disabled placeholder="请输入账号">
+                        <div class="title-error account">不能为空，请输入!</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label item-required">原密码:</label>
+                    <div class="col-sm-5 colHeight">
+                        <input type="password" class="form-control" id="password" placeholder="请输入原始密码">
+                        <div class="title-error password">不能为空，请输入!</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword" class="col-sm-3 control-label item-required">新密码:</label>
+                    <div class="col-sm-5 colHeight">
+                        <input type="password" class="form-control" id="newPassword" placeholder="请输入新密码">
+                        <div class="title-error newPassword">不能为空，请输入!</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newPasswordRepeat" class="col-sm-3 control-label item-required">确认新密码:</label>
+                    <div class="col-sm-5 colHeight">
+                        <input type="password" class="form-control" id="newPasswordRepeat" placeholder="请确认新密码">
+                        <div class="title-error newPasswordRepeat">不能为空，请输入!</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5 col-sm-offset-3 updatePasswordErrorTitle">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-5">
+                        <a class="btn btn-lg btn-default btn-primary updatePassword">修改密码</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--设备管理-->
+        <div class="main-right-dev style-display-none">
+            <form class="form-inline main-right-dev-search-form">
+                <div class="form-group">
+                    <label for="searchName">姓名:</label>
+                    <input type="text" class="form-control" id="searchName" placeholder="请输入姓名">
+                </div>
+                <div class="form-group">
+                    <label for="searchProtect">保险机构:</label>
+                    <input type="text" class="form-control" id="searchProtect" placeholder="请输入保险机构">
+                </div>
+                <div class="form-group">
+                    <label for="searchState">状态:</label>
+                    <select name="state" id="searchState">
+                        <option value="" selected="selected">全部</option>
+                        <option value="0">待审核</option>
+                        <option value="1">审核通过</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchState">设备类型:</label>
+                    <select name="state" id="searchType">
+                        <option value="" selected="selected">全部</option>
+                        <option value="综合机械">综合机械</option>
+                        <option value="挖掘机械">挖掘机械</option>
+                        <option value="铲土运输机械">铲土运输机械</option>
+                        <option value="压实机械">压实机械</option>
+                        <option value="路面机械">路面机械</option>
+                        <option value="桩工机械">桩工机械</option>
+                        <option value="混凝土机械">混凝土机械</option>
+                        <option value="装修机械">装修机械</option>
+                        <option value="矿山机械">矿山机械</option>
+                        <option value="起重机械">起重机械</option>
+                        <option value="农用机械">农用机械</option>
+                        <option value="船舶">船舶</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>区域地址:</label>
+                    <select class="initCity" name="address" id="city">
+                        <option value="" selected="selected">全部</option>
+                        <option value="长沙市">长沙市</option>
+                        <option value="株洲市">株洲市</option>
+                        <option value="湘潭市">湘潭市</option>
+                        <option value="衡阳市">衡阳市</option>
+                        <option value="邵阳市">邵阳市</option>
+                        <option value="岳阳市">岳阳市</option>
+                        <option value="常德市">常德市</option>
+                        <option value="张家界市">张家界市</option>
+                        <option value="益阳市">益阳市</option>
+                        <option value="郴州市">郴州市</option>
+                        <option value="永州市">永州市</option>
+                        <option value="怀化市">怀化市</option>
+                        <option value="娄底市">娄底市</option>
+                        <option value="湘西土家族苗族自治州">湘西土家族苗族自治州</option>
+                        <option value="市辖区">市辖区</option>
+                    </select>
+                    <select name="address" class="initArea" id="area">
+                        <option value="" selected="selected"></option>
+                        <option value="岳麓区">岳麓区</option>
+                        <option value="芙蓉区">芙蓉区</option>
+                        <option value="天心区">天心区</option>
+                        <option value="开福区">开福区</option>
+                        <option value="雨花区">雨花区</option>
+                        <option value="浏阳市">浏阳市</option>
+                        <option value="长沙县">长沙县</option>
+                        <option value="望城县">望城县</option>
+                        <option value="宁乡县">宁乡县</option>
+                        <option value="市辖区">市辖区</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>日期:</label>
+                    <input type="date" class="form-control" id="beginDate" placeholder="请选择开始日期">
+                    <span>-</span>
+                    <input type="date" class="form-control" id="endDate" placeholder="请选择结束日期">
+                </div>
+                <a class="btn btn-info glyphicon glyphicon-search search-form-btn" id="devSearch">搜索</a>
+            </form>
+            <div>
+                <button class="btn btn-primary glyphicon glyphicon-plus addDev">新增设备</button>
+                <button class="btn btn-info glyphicon glyphicon-download-alt deriveDev style-display-none">导出设备</button>
+            </div>
+            <div class="main-right-dev-table">
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>姓名</th>
+                        <th>身份证</th>
+                        <th>登记编号</th>
+                        <th>登机单位</th>
+                        <th>联系电话</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="main-right-dev-table-content">
+                    <tr class="equipmentId001">
+                        <td>001</td>
+                        <td>张三</td>
+                        <td>4548855852824152</td>
+                        <td>gcjx00000001</td>
+                        <td>岳麓区管理所</td>
+                        <td>18599999999</td>
+                        <td><span class="label label-success labelAuditStatus1">审核完成</span><span
+                            class="label label-warning labelAuditStatus0">待审核</span></td>
+                        <td data-userName="张三" data-equipmentNumber="湘H433332"
+                            data-equipmentId="001">
+                            <button class="btn btn-info btn-sm tableInfo">详情</button>
+                            <button class="btn btn-success btn-sm tableAudit">初审</button>
+                            <button class="btn btn-warning btn-sm tableEdit">编辑</button>
+                            <button class="btn btn-primary btn-sm tablePrint">打印</button>
+                            <button class="btn btn-default btn-sm tableCancelRescue">取消应急救援</button>
+                            <button class="btn btn-default btn-sm tableSetRescue">设为应急救援</button>
+                            <button class="btn btn-danger btn-sm tableDelete">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--分页-->
+                <div id="example" style="text-align: center">
+                    <ul id="pageLimit"></ul>
+                </div>
+            </div>
+        </div>
+        <!--设备详情-->
+        <div class="dev-detail style-display-none">
+            <div class="dev-detail-title">
+                <span class="dev-detail-title-icon"></span>
+                <span>湖南潇湘工程机械设备详情</span>
+            </div>
+            <div class="dev-detail-table">
+                <table border="1">
+                    <tr>
+                        <td>姓名：<span class="detail-userName"></span></td>
+                        <td>登记编号：<span class="detail-registerNumber"></span></td>
+                        <td>登记单位：<span class="detail-registerCompany"></span></td>
+                        <td>设备编号：<span class="detail-equipmentNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td>手机：<span class="detail-userPhone"></span></td>
+                        <td>身份证号：<span class="detail-userIdCard"></span></td>
+                        <td>设备品牌：<span class="detail-equipmentBrand"></span></td>
+                        <td>购买日期：<span class="detail-purchaseTime" data-type="purchaseTime"></span></td>
+                    </tr>
+                    <tr>
+                        <td>整机编号：<span class="detail-machineNumber"></span></td>
+                        <td>地址：<span class="detail-equipmentProvince"></span><span
+                            class="detail-equipmentCity"></span><span class="detail-equipmentArea"></span><span class="detail-userAddress"></span></td>
+                        <td>单位名称：<span class="detail-companyName"></span></td>
+                        <td>设备型号：<span class="detail-equipmentModel"></span></td>
+                    </tr>
+                    <tr>
+                        <td>设备类型：<span class="detail-equipmentType"></span></td>
+                        <td>信用代码：<span class="detail-creditCode"></span></td>
+                        <td>保险机构：<span class="detail-insuranceAgency"></span></td>
+                        <td>保险险种：<span class="detail-insuranceInsurance"></span></td>
+                    </tr>
+                    <tr>
+                        <td>铲斗容量(m3)：<span class="detail-bucketCapacity"></span></td>
+                        <td>整机质量(kg)：<span class="detail-machineQuality"></span></td>
+                        <td>耗油量：<span class="detail-fuelConsumption"></span></td>
+                        <td>行走方式：<span data-type="equipmentTrack" class="detail-equipmentTrack"></span></td>
+                    </tr>
+                    <tr>
+                        <td>发动机编号：<span class="detail-engineNumber"></span></td>
+                        <td>发动机功率(kw)：<span class="detail-enginePower"></span></td>
+                        <td>购买方式：<span class="detail-purchaseMethod" data-type="purchaseMethod"></span></td>
+                        <td>长（M）：<span class="detail-equipmentLong"></span></td>
+                    </tr>
+                    <tr>
+                        <td>宽（M）：<span class="detail-equipmentWide"></span></td>
+                        <td>高（M）：<span class="detail-equipmentHight"></span></td>
+                        <td>尾气排放：<span class="detail-exhaustEmission"></span></td>
+                        <td>排放阶段：<span class="detail-dischargeStage"></span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        噪音检测：<span class="detail-noiseDetection" data-type="noiseDetection"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        燃料来源：<span class="detail-fuelSource"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        燃料品种：<span class="detail-fuelVariety"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        污染物：<span class="detail-equipmentContaminants"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            设备照片：
+                            <img class="detail-equipmentPic" src="" alt="">
+                        </td>
+                        <td>
+                            发票照片：
+                            <img class="detail-billPic" src="" alt="">
+                        </td>
+                        <td>二维码：<img class="qrCode-img" src="" alt=""></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="dev-detail-btn">
+                <button class="btn btn-success dev-audit-status">审核通过</button>
+                <button class="btn btn-primary dev-detail-back">返回</button>
+                <button class="btn btn-info tablePrint">正面打印</button>
+                <button class="btn btn-info tablePrint2">背面打印</button>
+                <button class="btn btn-info tablePrint3 style-display-none">个人正面打印</button>
+            </div>
+            <!--打印-->
+            <div class="stamp">
+                <div class="stamp1-div">
+                    <!--设备编号-->
+                    <div class="detail-equipmentNumber stamp-clear"></div>
+                    <!--登记证编号-->
+                    <div class="detail-registerNumber stamp-clear"></div>
+                </div>
+                <!--单位名称-->
+                <div class="detail-companyName stamp1-div stamp-clear"></div>
+                <!--信用代码-->
+                <div class="detail-creditCode stamp1-div stamp-clear"></div>
+                <!--所有人地址-->
+                <div class="stamp1-div">
+                    <span class="detail-equipmentProvince stamp-clear"></span><span class="detail-equipmentCity stamp-clear"></span><span class="detail-equipmentArea stamp-clear"></span><span class="detail-userAddress stamp-clear"></span>
+                </div>
+                <!--二维码-->
+                <div class="stamp-qrcode"><img class="qrCode-img-stamp" src="" alt=""></div>
+                <!--发证日期-->
+                <div class="stamp-date">
+                    <span class="certificate-year stamp-clear"></span>
+                    <span class="certificate-month stamp-clear"></span>
+                    <span class="certificate-day stamp-clear"></span>
+                </div>
+            </div>
+            <!--打印2-->
+            <div class="stamp2 style-display-none">
+                <div class="stamp2-div stamp2-div-first">
+                    <!--设备品牌-->
+                    <div class="detail-equipmentBrand stamp-clear"></div>
+                    <!--设备类型-->
+                    <div class="detail-equipmentType stamp-clear"></div>
+                </div>
+                <div class="stamp2-div">
+                    <!--设备型号-->
+                    <div class="detail-equipmentModel stamp-clear"></div>
+                    <!--整机编号-->
+                    <div class="detail-machineNumber stamp-clear"></div>
+                </div>
+                <div class="stamp2-div">
+                    <!--发动机编号-->
+                    <div class="detail-engineNumber stamp-clear"></div>
+                    <!--发动机功率-->
+                    <div class="detail-enginePower stamp-clear"></div>
+                </div>
+                <div class="stamp2-div">
+                    <!--整机质量-->
+                    <div class="detail-machineQuality stamp-clear"></div>
+                    <!--购机日期-->
+                    <div class="detail-purchaseTime stamp-clear"></div>
+                </div>
+                <div class="stamp2-div">
+                    <div class="stamp2-div-div">
+                        <!--长-->
+                        <div class="detail-equipmentLong stamp-clear"></div>
+                        <!--宽-->
+                        <div class="detail-equipmentWide stamp-clear"></div>
+                        <!--高-->
+                        <div class="detail-equipmentHight stamp-clear"></div>
+                    </div>
+                    <div class="stamp2-div-div">
+                        <!--轮胎-->
+                        <div class="detail-equipmentTrack-lt stamp-clear"></div>
+                        <!--履带-->
+                        <div class="detail-equipmentTrack-ld stamp-clear"></div>
+                    </div>
+                </div>
+                <!--登记单位-->
+                <div class="stamp2-div-div detail-registerCompany">
+                </div>
+            </div>
+            <!--打印-->
+            <div class="stamp stamp3">
+                <div class="stamp1-div">
+                    <!--设备编号-->
+                    <div class="detail-equipmentNumber stamp-clear"></div>
+                    <!--登记证编号-->
+                    <div class="detail-registerNumber stamp-clear"></div>
+                </div>
+                <!--设备所有人姓名-->
+                <div class="detail-userName stamp1-div stamp-clear"></div>
+                <!--身份证号码-->
+                <div class="detail-userIdCard stamp1-div stamp-clear"></div>
+                <!--所有人地址-->
+                <div class="stamp1-div">
+                    <span class="detail-equipmentProvince stamp-clear"></span><span class="detail-equipmentCity stamp-clear"></span><span class="detail-equipmentArea stamp-clear"></span><span class="detail-userAddress stamp-clear"></span>
+                </div>
+                <!--二维码-->
+                <div class="stamp-qrcode"><img class="qrCode-img-stamp" src="" alt=""></div>
+                <!--发证日期-->
+                <div class="stamp-date">
+                    <span class="certificate-year stamp-clear"></span>
+                    <span class="certificate-month stamp-clear"></span>
+                    <span class="certificate-day stamp-clear"></span>
+                </div>
+            </div>
+        </div>
+        <!--新增设备-->
+        <div class="dev-add style-display-none">
+            <div class="dev-add-title">新增设备:</div>
+            <div class="dev-add-title-edit">编辑设备:</div>
+            <form class="form-inline">
+                <div class="form-group form-required">
+                    <label class="item-required" for="userName">姓名：</label>
+                    <input type="text" class="form-control" id="userName" placeholder="请输入姓名">
+                    <div class="title-error userName title-error-margin-10">不能为空，请输入!</div>
+                </div>
+                <div class="form-group form-required">
+                    <label class="item-required" for="registerNumber">登记编号：</label>
+                    <input type="text" class="form-control" id="registerNumber" placeholder="请输入登记编号">
+                    <div class="title-error registerNumber">不能为空，请输入!</div>
+                </div>
+                <div class="form-group form-required">
+                    <label class="item-required" for="registerCompany">登记单位：</label>
+                    <input type="text" class="form-control" id="registerCompany" placeholder="请输入登记单位">
+                    <div class="title-error registerCompany">不能为空，请输入!</div>
+                </div>
+                <div class="form-group form-required">
+                    <label class="item-required" for="equipmentNumber">设备编号：</label>
+                    <input type="text" class="form-control" id="equipmentNumber" placeholder="请输入设备编号">
+                    <div class="title-error equipmentNumber">不能为空，请输入!</div>
+                </div>
+                <div class="form-group form-required">
+                    <label class="item-required" for="userPhone">手机：</label>
+                    <input type="text" class="form-control" id="userPhone" placeholder="请输入手机号" maxlength="11">
+                    <div class="title-error userPhone title-error-margin-10">不能为空，请输入!</div>
+                </div>
+                <div class="form-group form-required">
+                    <label class="item-required" for="userIdCard">身份证号：</label>
+                    <input type="text" class="form-control" id="userIdCard" placeholder="请输入身份证号">
+                    <div class="title-error userIdCard">不能为空，请输入!</div>
+                </div>
+                <div class="form-group form-required">
+                    <label class="item-required">地址：</label>
+                    <select class="initCity" name="address" id="equipmentCity">
+                        <option value="长沙市">长沙市</option>
+                        <option value="株洲市">株洲市</option>
+                        <option value="湘潭市">湘潭市</option>
+                        <option value="衡阳市">衡阳市</option>
+                        <option value="邵阳市">邵阳市</option>
+                        <option value="岳阳市">岳阳市</option>
+                        <option value="常德市">常德市</option>
+                        <option value="张家界市">张家界市</option>
+                        <option value="益阳市">益阳市</option>
+                        <option value="郴州市">郴州市</option>
+                        <option value="永州市">永州市</option>
+                        <option value="怀化市">怀化市</option>
+                        <option value="娄底市">娄底市</option>
+                        <option value="湘西土家族苗族自治州">湘西土家族苗族自治州</option>
+                        <option value="市辖区">市辖区</option>
+                    </select>
+                    <select name="address" class="initArea" id="equipmentArea">
+                        <option value="岳麓区">岳麓区</option>
+                        <option value="芙蓉区">芙蓉区</option>
+                        <option value="天心区">天心区</option>
+                        <option value="开福区">开福区</option>
+                        <option value="雨花区">雨花区</option>
+                        <option value="浏阳市">浏阳市</option>
+                        <option value="长沙县">长沙县</option>
+                        <option value="望城县">望城县</option>
+                        <option value="宁乡县">宁乡县</option>
+                        <option value="市辖区">市辖区</option>
+                    </select>
+                    <div class="title-error title-error-margin-10 equipmentArea">不能为空，请输入!</div>
+                </div>
+                <div class="form-group">
+                    <label for="userAddress">详细地址：</label>
+                    <input class="form-control" id="userAddress" placeholder="请输入设备所有人详细地址">
+                </div>
+                <div class="form-group">
+                    <label for="purchaseTime">购买日期：</label>
+                    <input type="date" class="form-control" id="purchaseTime" placeholder="请选择购买日期">
+                </div>
+                <div class="form-group">
+                    <label for="machineNumber">整机编号：</label>
+                    <input class="form-control" id="machineNumber" placeholder="请输入整机编号">
+                </div>
+                <div class="form-group">
+                    <label for="equipmentBrand">设备品牌：</label>
+                    <input type="email" class="form-control" id="equipmentBrand" placeholder="请输入设备品牌">
+                </div>
+                <div class="form-group">
+                    <label for="companyName">单位名称：</label>
+                    <input type="text" class="form-control" id="companyName" placeholder="请输入单位名称">
+                </div>
+                <div class="form-group">
+                    <label for="equipmentModel">设备型号：</label>
+                    <input type="text" class="form-control" id="equipmentModel" placeholder="请输入设备型号">
+                </div>
+                <div class="form-group">
+                    <label for="equipmentType">设备类型：</label>
+                    <select name="equipmentType" id="equipmentType">
+                        <option value="综合机械">综合机械</option>
+                        <option value="挖掘机械">挖掘机械</option>
+                        <option value="铲土运输机械">铲土运输机械</option>
+                        <option value="压实机械">压实机械</option>
+                        <option value="路面机械">路面机械</option>
+                        <option value="桩工机械">桩工机械</option>
+                        <option value="混凝土机械">混凝土机械</option>
+                        <option value="装修机械">装修机械</option>
+                        <option value="矿山机械">矿山机械</option>
+                        <option value="起重机械">起重机械</option>
+                        <option value="农用机械">农用机械</option>
+                        <option value="船舶">船舶</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="creditCode">信用代码：</label>
+                    <input type="text" class="form-control" id="creditCode" placeholder="请输入统一社会信用代码">
+                </div>
+                <div class="form-group">
+                    <label for="insuranceAgency">保险机构：</label>
+                    <input type="text" class="form-control" id="insuranceAgency" placeholder="请输入保险机构">
+                </div>
+                <div class="form-group">
+                    <label for="insuranceInsurance">保险险种：</label>
+                    <input type="text" class="form-control" id="insuranceInsurance" placeholder="请输入保险险种">
+                </div>
+                <div class="form-group">
+                    <label for="bucketCapacity">铲斗容量(m3)</label>
+                    <input type="number" class="form-control" id="bucketCapacity" placeholder="请选择铲斗容量">
+                </div>
+                <div class="form-group">
+                    <label for="machineQuality">整机质量(kg)</label>
+                    <input type="number" class="form-control" id="machineQuality" placeholder="请输入整机质量">
+                </div>
+                <div class="form-group">
+                    <label for="fuelConsumption">耗油量：</label>
+                    <input type="text" class="form-control" id="fuelConsumption" placeholder="请输入耗油量">
+                </div>
+                <div class="form-group">
+                    <label for="equipmentTrack">行走方式：</label>
+                    <select name="equipmentTrack" id="equipmentTrack">
+                        <option value="0">轮胎</option>
+                        <option value="1">履带</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="engineNumber">发动机编号：</label>
+                    <input type="text" class="form-control" id="engineNumber" placeholder="请输入发动机编号">
+                </div>
+                <div class="form-group">
+                    <label for="enginePower">发动机功率</label>
+                    <input type="number" class="form-control" id="enginePower" placeholder="请输入发动机功率(kw)">
+                </div>
+                <div class="form-group">
+                    <label for="purchaseMethod">购买方式：</label>
+                    <select name="purchaseMethod" id="purchaseMethod">
+                        <option value="0">全款购买</option>
+                        <option value="1">分期购买</option>
+                        <option value="2">转让购买</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="equipmentLong">长（M）：</label>
+                    <input type="number" class="form-control" id="equipmentLong" placeholder="请输入长度">
+                </div>
+                <div class="form-group">
+                    <label for="equipmentWide">宽（M）:</label>
+                    <input type="number" class="form-control" id="equipmentWide" placeholder="请输入宽度">
+                </div>
+                <div class="form-group">
+                    <label for="equipmentHight">高（M）：</label>
+                    <input type="number" class="form-control" id="equipmentHight" placeholder="请输入高度">
+                </div>
+                <div class="form-group">
+                    <label for="exhaustEmission">尾气排放：</label>
+                    <input type="text" class="form-control" id="exhaustEmission" placeholder="请输入尾气排放量">
+                </div>
+                <div class="form-group">
+                    <label for="dischargeStage">排放阶段：</label>
+                    <input type="text" class="form-control" id="dischargeStage" placeholder="请输入排放阶段">
+                </div>
+                <div class="form-group">
+                    <label for="noiseDetection">噪音检测：</label>
+                    <select name="noiseDetection" id="noiseDetection">
+                        <option value="1">合格</option>
+                        <option value="0">不合格</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="equipmentContaminants">污染物：</label>
+                    <input type="text" class="form-control" id="equipmentContaminants" placeholder="请输入污染物">
+                </div>
+                <div class="form-group">
+                    <label for="fuelSource">燃料来源：</label>
+                    <input type="text" class="form-control" id="fuelSource" placeholder="请输入燃料来源">
+                </div>
+                <div class="form-group">
+                    <label for="fuelVariety">燃料品种：</label>
+                    <input type="text" class="form-control" id="fuelVariety" placeholder="请输入燃料品种">
+                </div>
+                <div class="form-group">
+                    <label for="equipmentPic">设备照片：</label>
+                    <input accept="image/*" type="file" class="form-control" id="equipmentPic">
+                    <div class="btn btn-sm btn-info checkEquipmentPic style-display-none">查看照片</div>
+                </div>
+                <div class="form-group">
+                    <label for="billPic">发票照片：</label>
+                    <input accept="image/*" type="file" class="form-control" id="billPic">
+                    <div class="btn btn-sm btn-info checkBillPic style-display-none">查看照片</div>
+                </div>
+            </form>
+            <div class="dev-add-btn">
+                <button class="btn btn-success dev-add-btn-send">提 交</button>
+                <button class="btn btn-success dev-add-btn-send-edit">提 交</button>
+                <button class="btn btn-default dev-add-btn-back">返 回</button>
+            </div>
+        </div>
+        <!--环保检测-->
+        <div class="main-right-ev style-display-none">
+            <form class="form-inline main-right-dev-search-form">
+                <div class="form-group">
+                    <label for="searchName">姓名:</label>
+                    <input type="text" class="form-control" id="ev-searchName" placeholder="请输入姓名">
+                </div>
+                <div class="form-group">
+                    <label>区域地址:</label>
+                    <select class="initCity" name="address" id="ev-city">
+                        <option value="" selected="selected">全部</option>
+                        <option value="长沙市">长沙市</option>
+                        <option value="株洲市">株洲市</option>
+                        <option value="湘潭市">湘潭市</option>
+                        <option value="衡阳市">衡阳市</option>
+                        <option value="邵阳市">邵阳市</option>
+                        <option value="岳阳市">岳阳市</option>
+                        <option value="常德市">常德市</option>
+                        <option value="张家界市">张家界市</option>
+                        <option value="益阳市">益阳市</option>
+                        <option value="郴州市">郴州市</option>
+                        <option value="永州市">永州市</option>
+                        <option value="怀化市">怀化市</option>
+                        <option value="娄底市">娄底市</option>
+                        <option value="湘西土家族苗族自治州">湘西土家族苗族自治州</option>
+                        <option value="市辖区">市辖区</option>
+                    </select>
+                    <select name="address" class="initArea" id="ev-area">
+                        <option value="" selected="selected"></option>
+                        <option value="岳麓区">岳麓区</option>
+                        <option value="芙蓉区">芙蓉区</option>
+                        <option value="天心区">天心区</option>
+                        <option value="开福区">开福区</option>
+                        <option value="雨花区">雨花区</option>
+                        <option value="浏阳市">浏阳市</option>
+                        <option value="长沙县">长沙县</option>
+                        <option value="望城县">望城县</option>
+                        <option value="宁乡县">宁乡县</option>
+                        <option value="市辖区">市辖区</option>
+                    </select>
+                </div>
+            </form>
+            <div>
+                <button class="btn btn-success glyphicon glyphicon-check evTest">环保检测</button>
+            </div>
+            <div class="main-right-dev-table">
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>姓名</th>
+                        <th>身份证</th>
+                        <th>登记编号</th>
+                        <th>登机单位</th>
+                        <th>联系电话</th>
+                        <th>噪音检测</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="main-right-ev-table-content">
+                    <tr class="equipmentId001">
+                        <td>001</td>
+                        <td>张三</td>
+                        <td>4548855852824152</td>
+                        <td>gcjx00000001</td>
+                        <td>岳麓区管理所</td>
+                        <td>18599999999</td>
+                        <td>
+                            <span class="label label-success">合格</span>
+                            <span class="label label-danger">不合格</span>
+                        </td>
+                        <td data-userName="张三" data-equipmentNumber="湘H433332"
+                            data-equipmentId="001">
+                            <button class="btn btn-info btn-sm ev-tableInfo">详情</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--分页-->
+                <div id="example2" style="text-align: center">
+                    <ul id="pageLimit2"></ul>
+                </div>
+            </div>
+        </div>
+        <!--人员管理-->
+        <div class="main-right-personnel style-display-none">
+            <form class="form-inline main-right-dev-search-form">
+                <div class="form-group">
+                    <label for="managerUserName">姓名:</label>
+                    <input type="text" class="form-control" id="managerUserName" placeholder="请输入查询的姓名">
+                </div>
+                <div class="form-group">
+                    <label for="managerUserPhone">手机:</label>
+                    <input type="text" class="form-control" id="managerUserPhone" placeholder="请输入查询的手机号">
+                </div>
+                <div class="form-group">
+                    <label>区域地址:</label>
+                    <select class="initCity" name="address" id="managerCity">
+                        <option value="" selected="selected">全部</option>
+                        <option value="长沙市">长沙市</option>
+                        <option value="株洲市">株洲市</option>
+                        <option value="湘潭市">湘潭市</option>
+                        <option value="衡阳市">衡阳市</option>
+                        <option value="邵阳市">邵阳市</option>
+                        <option value="岳阳市">岳阳市</option>
+                        <option value="常德市">常德市</option>
+                        <option value="张家界市">张家界市</option>
+                        <option value="益阳市">益阳市</option>
+                        <option value="郴州市">郴州市</option>
+                        <option value="永州市">永州市</option>
+                        <option value="怀化市">怀化市</option>
+                        <option value="娄底市">娄底市</option>
+                        <option value="湘西土家族苗族自治州">湘西土家族苗族自治州</option>
+                        <option value="市辖区">市辖区</option>
+                    </select>
+                    <select name="address" class="initArea" id="managerArea">
+                    </select>
+                </div>
+            </form>
+            <button class="btn btn-info glyphicon glyphicon-search search-form-btn" id="userSearch">搜索</button>
+            <div>
+                <button class="btn btn-primary glyphicon glyphicon-plus addPersonnel">新增员工</button>
+            </div>
+            <div class="main-right-dev-table">
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>职位</th>
+                        <th>区域</th>
+                        <th>手机</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tableForPersonnel">
+                    <tr class="userId001" data-index="0">
+                        <td class="personnelName">张三</td>
+                        <td class="personnelRoleId">市级管理员</td>
+                        <td>长沙市岳麓区</td>
+                        <td class="personnelPhone">18599999999</td>
+                        <td data-userId="001">
+                            <button class="btn btn-success btn-sm handleEditPersonnel">编辑</button>
+                            <button class="btn btn-danger btn-sm handleDeletePersonnel">删除</button>
+                            <button class="btn btn-warning btn-sm handlePasswordRepeat">密码重置</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>张三</td>
+                        <td>市级管理员</td>
+                        <td>长沙市岳麓区</td>
+                        <td>18599999999</td>
+                        <td>
+                            <button class="btn btn-success btn-sm">编辑</button>
+                            <button class="btn btn-danger btn-sm">删除</button>
+                            <button class="btn btn-warning btn-sm">密码重置</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--分页-->
+                <div id="example1" style="text-align: center">
+                    <ul id="pageLimit1"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="modal fade" id="updatePasswordSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">操作成功</h4>
+            </div>
+            <div class="modal-body">
+                密码修改成功，请用新密码重新登录！
+            </div>
+            <div class="modal-footer">
+                <a href="manager-login.html" type="button" class="btn btn-default" data-dismiss="modal">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addPersonnelModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title title-add-personnel">添加员工</h4>
+                <h4 class="modal-title title-edit-personnel">编辑员工</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="addPersonnelName" class="control-label item-required col-sm-2">姓名:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="addPersonnelName">
+                            <div class="title-error style-display-none addPersonnelName">不能为空，请输入!</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="addPersonnelPhone" class="control-label item-required col-sm-2">手机:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" maxLength="11" id="addPersonnelPhone">
+                            <div class="title-error style-display-none addPersonnelPhone">不能为空，请输入!</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="addPersonnelRoleId" class="control-label item-required col-sm-2">职位:</label>
+                        <select class="col-sm-6" name="addPersonnelRoleId" id="addPersonnelRoleId"></select>
+                        <div class="title-error style-display-none addPersonnelRoleId">不能为空，请选择!</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="addPersonnelPhone" class="control-label item-required col-sm-2">区域:</label>
+                        <select class="col-sm-3 initCity" name="address" id="addPersonnelity">
+                            <option value="长沙市">长沙市</option>
+                            <option value="株洲市">株洲市</option>
+                            <option value="湘潭市">湘潭市</option>
+                            <option value="衡阳市">衡阳市</option>
+                            <option value="邵阳市">邵阳市</option>
+                            <option value="岳阳市">岳阳市</option>
+                            <option value="常德市">常德市</option>
+                            <option value="张家界市">张家界市</option>
+                            <option value="益阳市">益阳市</option>
+                            <option value="郴州市">郴州市</option>
+                            <option value="永州市">永州市</option>
+                            <option value="怀化市">怀化市</option>
+                            <option value="娄底市">娄底市</option>
+                            <option value="湘西土家族苗族自治州">湘西土家族苗族自治州</option>
+                            <option value="市辖区">市辖区</option>
+                        </select>
+                        <select class="col-sm-3 initArea" name="address" id="addPersonnelArea">
+                        </select>
+                        <div class="title-error style-display-none addPersonnelity">不能为空，请选择!</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary modal-btn-add">添加</button>
+                <button type="button" class="btn btn-primary modal-btn-upDate style-display-none">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--删除设备-->
+<div class="modal fade" id="deleteDev" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">删除设备</h4>
+            </div>
+            <div class="modal-body">
+                删除设备将无法修复，确定要删除设备编号（<span class="deleteEquipmentNumber"></span>）吗？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary modalDeleteDev">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--删除员工-->
+<div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">删除人员</h4>
+            </div>
+            <div class="modal-body">
+                删除人员将无法修复，确定要删除<span class="deleteUserName"></span>吗？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary confirmDeleteUser">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--重置密码-->
+<div class="modal fade" id="repeatPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">重置密码</h4>
+            </div>
+            <div class="modal-body">
+                确定要重置<span class="repeatPasswordModalName"></span>的密码吗？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary confirmRepeatPassword">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="passwordRepeatSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">密码重置</h4>
+            </div>
+            <div class="modal-body">
+                密码重置成功，请用户用初始密码123456重新登录！
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 密码改成功，请重新登录 -->
+<div class="modal fade" id="passwordUpdateSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">密码修改成功</h4>
+            </div>
+            <div class="modal-body">
+                密码修改成功，请您使用新密码重新登录！
+            </div>
+            <div class="modal-footer">
+                <a href="manager-login.html" type="button" class="btn btn-default">点击前往</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="handleErrorModal" tabindex="1000" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">操作失败</h4>
+            </div>
+            <div class="modal-body">
+                <span class="handleErrorModalContent text-red"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--查看照片-->
+<div class="modal fade" id="showPic" tabindex="1000" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <img src="" id="showPicImg" alt="">
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/cos-js-sdk-v5.min.js"></script>
+<script src="../js/bootstrap-paginator.js"></script>
+<script src="../js/jQuery.print.min.js"></script>
+<script src="../js/address.js"></script>
+<script src="../js/public.js"></script>
+<script src="../js/service.js"></script>
+<script src="../js/manager-index.js"></script>
+</body>
+</html>

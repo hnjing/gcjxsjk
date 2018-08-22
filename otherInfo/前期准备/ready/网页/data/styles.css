@@ -1,0 +1,276 @@
+﻿.ax_default {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  color:#333333;
+  text-align:center;
+  line-height:normal;
+}
+._形状 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  color:#333333;
+  text-align:center;
+  line-height:normal;
+}
+._一级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:32px;
+  text-align:left;
+}
+._二级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:24px;
+  text-align:left;
+}
+._三级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:18px;
+  text-align:left;
+}
+._四级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:14px;
+  text-align:left;
+}
+._五级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  text-align:left;
+}
+._六级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:10px;
+  text-align:left;
+}
+._文本段落 {
+  text-align:left;
+}
+.box_1 {
+}
+.box_2 {
+}
+.box_3 {
+}
+.label {
+  font-size:14px;
+  text-align:left;
+}
+.icon {
+}
+.line {
+}
+.text_field {
+  color:#000000;
+  text-align:left;
+}
+.droplist {
+  color:#000000;
+  text-align:left;
+}
+.list_box {
+  color:#000000;
+  text-align:left;
+}
+.checkbox {
+  text-align:left;
+}
+._流程形状 {
+}
+._连接线 {
+}
+.sticky_2 {
+  text-align:left;
+}
+.sticky_3 {
+  text-align:left;
+}
+.marker {
+  color:#FFFFFF;
+}
+._图片 {
+}
+.flow_shape {
+}
+.image {
+}
+.radio_button {
+  text-align:left;
+}
+._图片1 {
+  color:#000000;
+}
+.text___empty-big {
+  font-family:'Telenor Regular', 'Telenor';
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#CCCCCC;
+  text-align:left;
+}
+.text___content-sm {
+  font-family:'Telenor Regular', 'Telenor';
+  font-weight:400;
+  font-style:normal;
+  font-size:12px;
+  color:#333333;
+  text-align:left;
+}
+.text___button {
+  font-family:'framework-icons Regular', 'framework-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:12px;
+  color:#666666;
+}
+._水平线 {
+}
+.primary_button {
+  color:#FFFFFF;
+}
+._表格 {
+}
+._单元格 {
+}
+.placeholder {
+}
+._形状1 {
+}
+.shape {
+}
+.horizontal_line {
+}
+.box_11 {
+}
+.icon1 {
+}
+.flow_shape1 {
+}
+.ellipse {
+}
+.paragraph {
+  text-align:left;
+}
+.image1 {
+  color:#000000;
+}
+._图片2 {
+  color:#000000;
+}
+.text_area {
+  color:#000000;
+  text-align:left;
+}
+.link_button {
+  color:#169BD5;
+}
+.table_cell {
+}
+._一级标题1 {
+  font-family:'Arial Negreta', 'Arial';
+  font-weight:700;
+  font-style:normal;
+  font-size:32px;
+  text-align:left;
+}
+._单选按钮 {
+  text-align:left;
+}
+._水平线1 {
+}
+._二级标题1 {
+  font-family:'Arial Negreta', 'Arial';
+  font-weight:700;
+  font-style:normal;
+  font-size:24px;
+  text-align:left;
+}
+.box_31 {
+}
+._形状2 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:normal;
+  font-style:normal;
+}
+.line1 {
+}
+.table___theader-alt-l {
+  font-family:'Telenor Bold', 'Telenor';
+  font-weight:bold;
+  font-style:normal;
+  font-size:12px;
+  color:#474747;
+  text-align:left;
+}
+.table___tbody_select {
+  font-family:'Telenor Regular', 'Telenor';
+  font-weight:400;
+  font-style:normal;
+  font-size:12px;
+  color:#474747;
+  text-align:left;
+}
+.table___theader-alt-m {
+  font-family:'Telenor Bold', 'Telenor';
+  font-weight:bold;
+  font-style:normal;
+  font-size:12px;
+  color:#474747;
+  text-align:left;
+}
+.checkbox1 {
+  text-align:left;
+}
+.table___tbody {
+  font-family:'Telenor Regular', 'Telenor';
+  font-weight:400;
+  font-style:normal;
+  font-size:12px;
+  color:#474747;
+  text-align:left;
+}
+.table___tbody_hover {
+  font-family:'Telenor Regular', 'Telenor';
+  font-weight:400;
+  font-style:normal;
+  font-size:12px;
+  color:#474747;
+  text-align:left;
+}
+._文本段落1 {
+  text-align:left;
+}
+._主要按钮 {
+  font-family:'Microsoft YaHei Regular', 'Microsoft YaHei';
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#FFFFFF;
+}
+._垂直线 {
+}
+.button {
+}
+.icon2 {
+}
+.heading_3 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:18px;
+  text-align:left;
+}

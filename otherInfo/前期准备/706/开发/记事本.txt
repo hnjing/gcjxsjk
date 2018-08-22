@@ -1,0 +1,53 @@
+﻿397308698
+qqqq19921116520
+
+91430102MA4PKPB123
+湖南省长沙市芙蓉区马王堆街道东二环二段186号南天家园101房
+
+ftp相关的配置：
+	ip    118.24.171.48
+	端口  21
+	账号：py    密码：Py11236
+
+SecretId: AKIDe2YwY9Y3r1CGCHRIAspGeAkjCujDi7U7
+SecretKey: Mw9mplYYgdeXK1YBd2GNbwOvRo0K460F
+
+访问地址
+	118.24.171.48:8080
+
+项目访问地址
+	http://118.24.171.48:8080/zbsjk
+
+页面访问地址
+	118.24.171.48:8080/zbsjk/jsp/sjk/index.html
+	http://www.yysgcjx.cn
+	
+
+
+1.在电脑上新建一个目录，例如：C:\MyChromeDevUserData
+2.在属性页面中的目标输入框里加上   --disable-web-security --user-data-dir=C:\MyChromeDevUserData，--user-data-dir的值就是刚才新建的目录。
+3.点击应用和确定后关闭属性页面，并打开chrome浏览器。
+
+
+ip    140.143.99.188
+https://console.qcloud.com/cam/capi
+www.hnsyjjyzbsjk.cn
+
+
+（蔡勇军：18673317979。杨玉山：13874463309。张正胜：‭13319606251‬）
+
+
+1超级管理员
+
+2市级管理员
+
+3区级管理员
+
+4市级审核员
+
+5区级审核员
+
+6市级录入员
+
+7区级录入员
+
