@@ -39,12 +39,12 @@ var address = {
                     'value': '长沙县'
                 },
                 {
-                    'label': '望城县',
-                    'value': '望城县'
+                    'label': '望城区',
+                    'value': '望城区'
                 },
                 {
-                    'label': '宁乡县',
-                    'value': '宁乡县'
+                    'label': '宁乡区',
+                    'value': '宁乡区'
                 },{
                     'label': '市辖区',
                     'value': '市辖区'

@@ -438,7 +438,6 @@ $(function () {
     };
     // 登录后初始化
     var init = function () {
-        debugger;
         var roleName = currentRoleId == 1 ? '超级管理员' :
             currentRoleId == 2 ? '市级管理员' :
                 currentRoleId == 3 ? '区级管理员' :

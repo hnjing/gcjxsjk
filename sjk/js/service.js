@@ -53,6 +53,10 @@ service.addUser = function (userData, callback, callError) {
 
 //编辑人员接口
 service.updateUser = function (userData, userId, callback, callError) {
+    // 如果是市级管理员 不应该传区
+    if(userData.roleId == 2){
+        userData.userArea = ''
+    }
     $.ajax({
         type: "put",
         contentType: 'application/json',
