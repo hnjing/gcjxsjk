@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>应急救援查询</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../img/icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap-grid.css">-->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/public.css">
+    <style>
+        body {
+            background-image: url(../img/bg.png)
+        }
+
+        .index-icon {
+            margin: auto;
+            display: block;
+            margin-top: 10%;
+        }
+
+        .index-title {
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        .form-label {
+            font-size: 18px;
+        }
+
+        .login-back {
+            margin-left: 53px;
+        }
+
+        .btn-login, .btn-default {
+            width: 200px;
+        }
+        .emergencyAccount,.emergencyPassword{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="container">
+    <img class="index-icon" src="../img/icon.png" height="191" width="191"/>
+    <h1 class="index-title">应急救援查询</h1>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="emergencyAccount" class="col-sm-4 control-label form-label">账 号:</label>
+            <div class="col-sm-5 colHeight">
+                <input class="form-control" id="emergencyAccount" placeholder="请输入账号">
+                <div class="title-error emergencyAccount">不能为空，请输入!</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="emergencyPassword" class="col-sm-4 control-label form-label">密 码:</label>
+            <div class="col-sm-5 colHeight">
+                <input type="password" class="form-control" id="emergencyPassword" placeholder="请输入密码">
+                <div class="title-error emergencyPassword">不能为空，请输入!</div>
+            </div>
+        </div>
+    </form>
+    <div class="col-sm-offset-4 col-sm-8">
+        <button class="btn btn-lg btn-primary btn-login">登录</button>
+        <a href="../index.html" class="login-back btn btn-lg btn-default">返回</a>
+    </div>
+</div>
+<div class="modal fade" id="handleErrorModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">操作失败</h4>
+            </div>
+            <div class="modal-body">
+                <span class="handleErrorModalContent text-red"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/public.js"></script>
+<script src="../js/service.js"></script>
+<script>
+    $(function () {
+        $('.btn-login').click(function () {
+            var loginName = $('#emergencyAccount').val();
+            var loginPassword = $('#emergencyPassword').val();
+            var passOver = true;
+            if (!loginName) {
+                //如果姓名为空，提示用户
+                $(".emergencyAccount").show();
+                passOver = false
+            }
+            if (!loginPassword) {
+                $(".emergencyPassword").show();
+                passOver = false
+            }
+            if (passOver) {
+                service.login({pwd: loginPassword, account: loginName,loginType:'yingji'}, function (data) {
+                    console.log(data);
+                    window.sessionStorage.setItem('userName',data.userName);
+                    window.sessionStorage.setItem('userPhone',data.userPhone);
+                    window.sessionStorage.setItem('roleId',data.roleId);
+                    window.sessionStorage.setItem('userId',data.userId);
+                    window.sessionStorage.setItem('userCity',data.userCity);
+                    window.sessionStorage.setItem('userArea',data.userArea);
+                    window.location.href = './emergency.html';
+                });
+            }
+        });
+        $('#emergencyAccount').change(function () {
+            $(".emergencyAccount").hide();
+        });
+        $('#emergencyPassword').change(function () {
+            $(".emergencyPassword").hide();
+        })
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>设备详情页面</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="shortcut icon" href="../img/icon.png">
+</head>
+<body>
+<header class="bg-light-blue">
+    <div class="header-left">
+        <h3><img class="header-left-icon" src="../img/icon.png" alt=""><span class="changeName">湖南应急救援物资装备数据库</span></h3>
+    </div>
+</header>
+<main>
+    <div class="main-left">
+        <div class="list-group">
+            <button type="button" class="list-group-item glyphicon glyphicon-wrench active">设备管理</button>
+        </div>
+    </div>
+    <div class="main-right">
+        <!--设备详情-->
+        <div class="dev-detail">
+            <div class="dev-detail-title">
+                <span class="dev-detail-title-icon"></span>
+                <span>湖南潇湘工程机械设备详情</span>
+            </div>
+            <div class="dev-detail-table">
+                <table border="1">
+                    <tr>
+                        <td>姓名：<span class="detail-userName"></span></td>
+                        <td>登记编号：<span class="detail-registerNumber"></span></td>
+                        <td>登记单位：<span class="detail-registerCompany"></span></td>
+                        <td>设备编号：<span class="detail-equipmentNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td>手机：<span class="detail-userPhone"></span></td>
+                        <td>身份证号：<span class="detail-userIdCard"></span></td>
+                        <td>设备品牌：<span class="detail-equipmentBrand"></span></td>
+                        <td>购买日期：<span class="detail-purchaseTime"></span></td>
+                    </tr>
+                    <tr>
+                        <td>地址：<span class="detail-equipmentProvince"></span><span
+                            class="detail-equipmentCity"></span><span class="detail-equipmentArea"></span></td>
+                        <td>单位名称：<span class="detail-companyName"></span></td>
+                        <td>设备型号：<span class="detail-equipmentModel"></span></td>
+                        <td>设备类型：<span class="detail-equipmentType"></span></td>
+                    </tr>
+                    <tr>
+                        <td>保险机构：<span class="detail-insuranceAgency"></span></td>
+                        <td>保险险种：<span class="detail-insuranceInsurance"></span></td>
+                        <td>铲斗容量(m3)：<span class="detail-bucketCapacity"></span></td>
+                        <td>整机质量(kg)：<span class="detail-machineQuality"></span></td>
+                    </tr>
+                    <tr>
+                        <td>耗油量：<span class="detail-fuelConsumption"></span></td>
+                        <td>履带(mm)：<span class="detail-equipmentTrack"></span></td>
+                        <td>发动机编号：<span class="detail-engineNumber"></span></td>
+                        <td>发动机功率(kw)：<span class="detail-enginePower"></span></td>
+                    </tr>
+                    <tr>
+                        <td>购买方式：<span class="detail-purchaseMethod" data-type="purchaseMethod"></span></td>
+                        <td>长（M）：<span class="detail-equipmentLong"></span></td>
+                        <td>宽（M）：<span class="detail-equipmentWide"></span></td>
+                        <td>高（M）：<span class="detail-equipmentHight"></span></td>
+                    </tr>
+                    <tr>
+                        <td>尾气排放：<span class="detail-exhaustEmission"></span></td>
+                        <td>排放阶段：<span class="detail-dischargeStage"></span></td>
+                        <td>噪音检测：<span class="detail-noiseDetection" data-type="noiseDetection"></span></td>
+                        <td>污染物：<span class="detail-equipmentContaminants"></span></td>
+                    </tr>
+                    <tr>
+                        <td>燃料来源：<span class="detail-fuelSource"></span></td>
+                        <td>燃料品种：<span class="detail-fuelVariety"></span></td>
+                        <td></td>
+                        <td>二维码：<img class="qrCode-img" src="" alt=""></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="dev-detail-btn">
+                <a class="btn btn-lg btn-primary dev-detail-back" href="equipment-login.html">返回</a>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/public.js"></script>
+<script>
+    $(function(){
+        var data = JSON.parse(window.sessionStorage.getItem('devInfo'));
+        console.log(data);
+        for (var key in data) {
+            var current = $('.detail-' + key);
+            if (current.attr('data-type') === 'purchaseMethod') {
+                current.text(data[key] ? '分期购买' : '全款购买')
+            } else if (current.attr('data-type') === 'noiseDetection') {
+                current.text(data[key]==='1' ? '合格' : '不合格')
+            } else {
+                if (current.length) {
+                    current.text(data[key]);
+                }
+            }
+        }
+        //二维码显示
+        if(data.qrCodePath){
+            $('.qrCode-img').attr('src',data.qrCodePath);
+        }
+    })
+</script>
+</body>
+</html>

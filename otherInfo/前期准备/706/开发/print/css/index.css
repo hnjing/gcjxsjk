@@ -1,0 +1,5 @@
+@charset "utf-8";
+#main{}
+.paper{height:auto; position:absolute;color:#666;}
+.paper dt{height:18px;cursor:move;}
+ 
