@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7b04c1b-3a95-46d3-92da-978ee49d6f6c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/js/manager-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/manager-index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/public.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/public.js" afterDir="false" />
     </list>
     <ignored path="sjk.iws" />
@@ -257,7 +256,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1553" />
@@ -381,12 +380,12 @@
       <workItem from="1534821755621" duration="1802000" />
       <workItem from="1534833609735" duration="660000" />
       <workItem from="1534923795146" duration="3502000" />
-      <workItem from="1535936850066" duration="795000" />
+      <workItem from="1535936850066" duration="1401000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262291000" />
+    <option name="totallyTimeSpent" value="262897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
