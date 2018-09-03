@@ -272,6 +272,9 @@ $(function () {
         $('.dev-add .title-error').hide();
         $('.checkEquipmentPic').hide();
         $('.checkBillPic').hide();
+        //图片滞空
+        billPic = null;
+        equipmentPic = null;
     };
     // 人员管理表单置空
     var vacanPersonnel = function () {
