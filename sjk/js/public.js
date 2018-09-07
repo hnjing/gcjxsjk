@@ -7,7 +7,8 @@ var config = {
     // IP:'http://localhost/zbsjk/'
     // IP: 'http://www.yysgcjx.cn/zbsjk/'
     // IP:'http://www.hnsyjjyzbsjk.cn/zbsjk/'
-    IP : 'http://132.232.28.225/zbsjk/'
+    // IP : 'http://132.232.28.225/zbsjk/'
+    IP: 'http://www.cssgcjxyjsjk.cn/zbsjk/'
 };
 //修改变化
 // hn Bucket = 'test-1251784278';  Region = 'ap-guangzhou';
@@ -22,10 +23,9 @@ switch (config.IP) {
         Bucket = 'test-1255970667';
         break;
     // case 'http://www.cssgcjxyjsjk.cn/zbsjk/':
-    case 'http://132.232.28.225/zbsjk/':
+    case 'http://www.cssgcjxyjsjk.cn/zbsjk/':
         $('.changeName').text('长沙市工程机械应急数据库');
         Bucket = 'test-1257352992';
-        Region = 'ap-guangzhou';
         break;
     default:
         Bucket = 'test-1251784278';
