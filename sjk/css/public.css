@@ -304,6 +304,10 @@ main{
     margin-left:15px;
     width:50px;
 }
+#stamp2-div-div-gdkd{
+    width:300px;
+    overflow:hidden;
+}
 .stamp2-div-div>div{
     float:left;
 }
