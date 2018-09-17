@@ -6,9 +6,9 @@ var config = {
     // IP : 'http://140.143.99.188/zbsjk/'
     // IP:'http://localhost/zbsjk/'
     // IP: 'http://www.yysgcjx.cn/zbsjk/'
-    // IP:'http://www.hnsyjjyzbsjk.cn/zbsjk/'
+     IP:'http://www.hnsyjjyzbsjk.cn/zbsjk/'
     // IP : 'http://132.232.28.225/zbsjk/'
-    IP: 'http://www.cssgcjxyjsjk.cn/zbsjk/'
+    //IP: 'http://www.cssgcjxyjsjk.cn/zbsjk/'
 };
 //修改变化
 // hn Bucket = 'test-1251784278';  Region = 'ap-guangzhou';
