@@ -59,6 +59,8 @@ ip    132.232.28.225
 备案主体：邵阳市城乡工程机械管理中心
 营业执照：91430500MA4M0FJW8Y
 地址：大祥区百春园创富大厦501号
+SecretId: AKIDw46xkOHCLNFwRkPshLxQiroaBaoxqmQv
+SecretKey: TmwyqX5Sf4NUQCmDSbO7f2LaYRBj5JF9
 
 账号2764856123
 密码pengyong
