@@ -2,10 +2,10 @@
  * Created by py on 2018/4/30.
  */
 var config = {
-    // IP: 'http://www.yysgcjx.cn/zbsjk/'
+     IP: 'http://www.yysgcjx.cn/zbsjk/'
     // IP:'http://www.hnsyjjyzbsjk.cn/zbsjk/'
     //IP: 'http://www.cssgcjxyjsjk.cn/zbsjk/'
-    IP: 'http://www.sysgcjx.cn/zbsjk/'
+    //IP: 'http://www.sysgcjx.cn/zbsjk/'
 };
 //修改变化
 // hn Bucket = 'test-1251784278';  Region = 'ap-guangzhou';

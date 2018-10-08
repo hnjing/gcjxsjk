@@ -32,6 +32,9 @@
         .search-form-btn{
             margin-left:20px;
         }
+        #searchId{
+            width:128px;
+        }
     </style>
     <!-- 这里是解决bootstrap兼容性问题  -->
     <!-- html5shiv.js和respond.js IE8支持HTML5元素和媒体查询 -->
@@ -192,6 +195,10 @@
                     <span>-</span>
                     <input type="date" class="form-control" id="endDate" placeholder="请选择结束日期">
                 </div>
+                <div class="form-group">
+                    <label for="searchName">设备编号:</label>
+                    <input type="text" class="form-control" id="searchId" placeholder="请输入查询编号">
+                </div>
                 <a class="btn btn-info glyphicon glyphicon-search search-form-btn" id="devSearch">搜索</a>
             </form>
             <div>
@@ -214,26 +221,6 @@
                     </tr>
                     </thead>
                     <tbody class="main-right-dev-table-content">
-                    <tr class="equipmentId001">
-                        <td>001</td>
-                        <td>张三</td>
-                        <td>4548855852824152</td>
-                        <td>gcjx00000001</td>
-                        <td>岳麓区管理所</td>
-                        <td>18599999999</td>
-                        <td><span class="label label-success labelAuditStatus1">审核完成</span><span
-                            class="label label-warning labelAuditStatus0">待审核</span></td>
-                        <td data-userName="张三" data-equipmentNumber="湘H433332"
-                            data-equipmentId="001">
-                            <button class="btn btn-info btn-sm tableInfo">详情</button>
-                            <button class="btn btn-success btn-sm tableAudit">初审</button>
-                            <button class="btn btn-warning btn-sm tableEdit">编辑</button>
-                            <button class="btn btn-primary btn-sm tablePrint">打印</button>
-                            <button class="btn btn-default btn-sm tableCancelRescue">取消应急救援</button>
-                            <button class="btn btn-default btn-sm tableSetRescue">设为应急救援</button>
-                            <button class="btn btn-danger btn-sm tableDelete">删除</button>
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
                 <!--分页-->

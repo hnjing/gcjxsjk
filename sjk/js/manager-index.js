@@ -702,6 +702,7 @@ $(function () {
     //点击搜索
     $('#devSearch').click(function () {
         devFilter.userName = $('#searchName').val();
+        devFilter.equipmentNumber = $('#searchId').val();
         devFilter.insuranceAgency = $('#searchProtect').val();
         devFilter.auditStatus = $('#searchState').val();
         devFilter.equipmentType = $('#searchType').val();
