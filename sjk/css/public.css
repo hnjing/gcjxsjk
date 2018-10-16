@@ -271,7 +271,7 @@ main{
 }
 .stamp-date{
     padding-left:270px;
-    margin-top:8px;
+    margin-top:12px;
 }
 .stamp-qrcode{
     margin-top:10px;
@@ -287,9 +287,9 @@ main{
         page-break-after: always;
     }
 }
-.stamp2-div-first{
-    margin-top:32px;
-}
+/*.stamp2-div-first{*/
+    /*margin-top:32px;*/
+/*}*/
 .stamp2-div{
     height:39px;
 }

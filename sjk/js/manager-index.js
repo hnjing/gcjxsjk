@@ -555,7 +555,7 @@ $(function () {
             $('.personnelLeftBtn').show();
         }
         // 导出按钮
-        if(currentRoleId===2){
+        if(currentRoleId==2){
             $('.deriveDev').show();
         }
     };
@@ -880,7 +880,7 @@ $(function () {
     $('.tablePrint').click(function () {
         $('.certificate-year').text(new Date().getFullYear());
         $('.certificate-month').text(new Date().getMonth()+1);
-        $('.certificate-day').text(new Date().getDay());
+        $('.certificate-day').text(new Date().getDate());
         $('.stamp').show();
         $(".stamp").print({
         });
@@ -890,7 +890,7 @@ $(function () {
     $('.tablePrint3').click(function () {
         $('.certificate-year').text(new Date().getFullYear());
         $('.certificate-month').text(new Date().getMonth()+1);
-        $('.certificate-day').text(new Date().getDay());
+        $('.certificate-day').text(new Date().getDate());
         $('.stamp3').show();
         $(".stamp3").print({
         });

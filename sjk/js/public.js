@@ -25,8 +25,10 @@ switch (config.IP) {
         Bucket = 'test-1257352992';
         break;
     case 'http://www.sysgcjx.cn/zbsjk/':
-        $('.changeName').text('邵阳市工程机械应急数据库');
+        $('.changeName').text('邵阳市工程机械管理中心');
         Bucket = 'test-1257375524';
+        $('#icon').attr('href','img/shaoyangicon.jpg');
+        $('.icon-index').attr('src','img/shaoyangicon.jpg');
         break;
     default:
         Bucket = 'test-1251784278';
