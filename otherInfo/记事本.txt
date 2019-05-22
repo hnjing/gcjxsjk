@@ -23,7 +23,7 @@ ftp相关的配置：
 SecretId: AKIDe2YwY9Y3r1CGCHRIAspGeAkjCujDi7U7
 SecretKey: Mw9mplYYgdeXK1YBd2GNbwOvRo0K460F
 
-
+服务器密码：c7aDVShkWNkp
 页面访问地址 www.hnsyjjyzbsjk.cn
 
 （杨玉山：13874463309。张正胜：‭13319606251‬。蔡勇军：18673317979）
