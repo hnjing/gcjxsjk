@@ -20,6 +20,9 @@ ftp相关的配置：
 	端口  21
 	账号：py    密码：Py11236
 
+新 ip   139.155.120.180
+
+
 SecretId: AKIDe2YwY9Y3r1CGCHRIAspGeAkjCujDi7U7
 SecretKey: Mw9mplYYgdeXK1YBd2GNbwOvRo0K460F
 
