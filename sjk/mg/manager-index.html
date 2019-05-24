@@ -65,6 +65,7 @@
             <button type="button" class="list-group-item glyphicon glyphicon-wrench">设备管理</button>
             <button type="button" class="list-group-item glyphicon glyphicon-globe">环保检测</button>
             <button type="button" class="list-group-item glyphicon glyphicon-user style-display-none personnelLeftBtn">人员管理</button>
+            <button type="button" class="list-group-item glyphicon glyphicon-scale style-display-none safetyTrainingLeftBtn">安全培训管理</button>
         </div>
     </div>
     <div class="main-right">
@@ -801,6 +802,38 @@
                 <!--分页-->
                 <div id="example1" style="text-align: center">
                     <ul id="pageLimit1"></ul>
+                </div>
+            </div>
+        </div>
+        <!--安全培训管理-->
+        <div class="main-right-safety style-display-none">
+            <form class="form-inline main-right-dev-search-form">
+                <div class="form-group">
+                    <label for="searchName">姓名:</label>
+                    <input type="text" class="form-control" id="searchNameSafety" placeholder="请输入姓名">
+                </div>
+                <a class="btn btn-info glyphicon glyphicon-search search-form-btn" id="devSearchSafety">搜索</a>
+            </form>
+            <div class="main-right-dev-table">
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>设备编号</th>
+                        <th>姓名</th>
+                        <th>身份证</th>
+                        <th>登记编号</th>
+                        <th>登机单位</th>
+                        <th>联系电话</th>
+                        <th>培训状态</th>
+                    </tr>
+                    </thead>
+                    <tbody class="main-right-dev-table-content-safety">
+                    </tbody>
+                </table>
+                <!--分页-->
+                <div id="example3" style="text-align: center">
+                    <ul id="pageLimit3"></ul>
                 </div>
             </div>
         </div>

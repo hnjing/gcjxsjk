@@ -13,7 +13,7 @@ $(function () {
     var billPic = null;
     var userData = [];
     //手机正则
-    var regExpPhone = /^1(3|4|5|7|8)\d{9}$/;
+    var regExpPhone = /^1\d{10}$/;
     //身份证正则
     var regExpCare = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
     var roleList = [
@@ -331,6 +331,35 @@ $(function () {
         $('.main-right-dev').hide();
         $('.dev-detail').show();
     };
+    // 安全培训后台数据生成table
+    var createSafetyTable = function (data) {
+        var dom = '';
+        data.forEach(function (i) {
+            var addClassName = 'equipmentId' + i.equipmentId;
+            if (i.auditStatus) {
+                // 审核通过class
+                addClassName += ' auditStatus1';
+                if (i.rescueStatus) {
+                    // 是应急救援class
+                    addClassName += ' rescueStatus1';
+                } else {
+                    addClassName += ' rescueStatus0';
+                }
+            }
+            var currentDom = '<tr class="' + addClassName + '">'
+                + '<td>' + i.equipmentNumber + '</td>'
+                + '<td>' + i.userName + '</td>'
+                + '<td>' + i.userIdCard + '</td>'
+                + '<td>' + i.registerNumber + '</td>'
+                + '<td>' + i.registerCompany + '</td>'
+                + '<td>' + i.userPhone + '</td>'
+                + '<td>'
+                + '<span class="label label-success labelAuditStatus1">通过培训</span>'
+                + '</td></tr>';
+            dom += currentDom
+        });
+        $('.main-right-dev-table-content-safety').html(dom);
+    };
     // 后台数据生成table
     var createTable = function (data) {
         var dom = '';
@@ -360,7 +389,7 @@ $(function () {
                 + '<button class="btn btn-info btn-sm tableInfo">详情</button>' +
                 (currentRoleId < 6 ? '<button class="btn btn-success btn-sm tableAudit">初审</button>' : '') +
                 '<button class="btn btn-warning btn-sm tableEdit">编辑</button>' +
-                // '<button class="btn btn-primary btn-sm tablePrint">打印</button>' +
+                    // '<button class="btn btn-primary btn-sm tablePrint">打印</button>' +
                 '<button class="btn btn-default btn-sm tableCancelRescue">取消应急救援</button>' +
                 '<button class="btn btn-default btn-sm tableSetRescue">设为应急救援</button>' +
                 '<button class="btn btn-info btn-sm tableSetPaystatus" ' +
@@ -402,7 +431,7 @@ $(function () {
         if(!time)return;
         var handleTime = new Date(time);
         var year = handleTime.getFullYear();
-        var month = handleTime.getMonth()<10?'0'+(handleTime.getMonth()+1):(handleTime.getMonth()+1);
+        var month = handleTime.getMonth()<9?'0'+(handleTime.getMonth()+1):(handleTime.getMonth()+1);
         var day = handleTime.getDate()<10?'0'+handleTime.getDate():handleTime.getDate();
         return year+'-'+month+'-'+day
     }
@@ -543,6 +572,40 @@ $(function () {
                 })
             }
         });
+        // Safety翻页
+        //pagination
+        $('#pageLimit3').bootstrapPaginator({
+            currentPage: 1,
+            totalPages: 1,
+            size: "normal",
+            bootstrapMajorVersion: 3,
+            alignment: "right",
+            numberOfPages: 8,
+            itemTexts: function (type, page, current) {
+                switch (type) {
+                    case "first":
+                        return "首页";
+                    case "prev":
+                        return "上一页";
+                    case "next":
+                        return "下一页";
+                    case "last":
+                        return "末页";
+                    case "page":
+                        return page;
+                }//默认显示的是第一页。
+            },
+            onPageClicked: function (event, originalEvent, type, page) {//给每个页眉绑定一个事件，其实就是ajax请求，其中page变量为当前点击的页上的数字。
+                devFilter.pageNo = page;
+                service.getDevList(devFilter, function (data) {
+                    $('#pageLimit3').bootstrapPaginator({
+                        currentPage: data.pageNum,
+                        totalPages: data.pages
+                    });
+                    createSafetyTable(data.list);
+                })
+            }
+        });
         //市的设置
         if (currentRoleId != 1) {
             $('.initCity').val(currentCity).attr('disabled', true);
@@ -553,6 +616,9 @@ $(function () {
         }
         if (currentRoleId < 4) {
             $('.personnelLeftBtn').show();
+        }
+        if (config.IP == 'http://www.yysgcjx.cn/zbsjk/') {
+            $('.safetyTrainingLeftBtn').show();
         }
         // 导出按钮
         if(currentRoleId==2){
@@ -568,6 +634,17 @@ $(function () {
                 totalPages: data.pages
             });
             $('.main-right-dev').show();
+        });
+    };
+    var safetyInit = function () {
+        service.getDevList({pageNo: 1, pageSize: 10}, function (data) {
+            createSafetyTable(data.list);
+            debugger
+            $('#pageLimit3').bootstrapPaginator({
+                currentPage: data.pageNum,
+                totalPages: data.pages
+            });
+            $('.main-right-safety').show();
         });
     };
     // 环境检测初始化
@@ -668,6 +745,10 @@ $(function () {
                     $('.main-right-ev').show();
                     evInit();
                     break;
+                case '安全培训管理':
+                    $('.main-right-safety').show();
+                    safetyInit();
+                    break;
                 default :
                     $('.main-right-personnel').show();
                     //获取职能列表
@@ -714,6 +795,18 @@ $(function () {
         service.getDevList(devFilter, function (data) {
             createTable(data.list);
             $('#pageLimit').bootstrapPaginator({
+                currentPage: data.pageNum,
+                totalPages: data.pages
+            });
+        })
+    });
+    //点击搜索
+    $('#devSearchSafety').click(function () {
+        devFilter.userName = $('#searchNameSafety').val();
+        devFilter.pageNo = 1;
+        service.getDevList(devFilter, function (data) {
+            createSafetyTable(data.list);
+            $('#pageLimit3').bootstrapPaginator({
                 currentPage: data.pageNum,
                 totalPages: data.pages
             });
