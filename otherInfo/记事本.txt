@@ -40,7 +40,7 @@ ip   118.24.171.48
 
 -----------长沙市------------------------------------------------------------------
 腾讯云账号：737464153
-密码：zzh8918196
+密码：zs6812072
 备案授权码：04001l10zswkh053lsyo
 SecretId: AKIDWs0tXyZ7pIWVFkd4sRzHJ6ewykFUKCft  
 SecretKey: 4sQjqgGZcOt87qITP5UcU6VfaT9anlUy
